@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load dataset
+# Loading dataset
 data = pd.read_csv("global_air_pollution_data.csv")
 
 # Count the occurrences of each AQI category
