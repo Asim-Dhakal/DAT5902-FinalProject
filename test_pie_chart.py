@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from First import plot_aqi_pie_chart  # Replace `your_module` with your script's name
+from First import plot_aqi_pie_chart  
 
 def test_equal_distribution():
     """Test for equal distribution of AQI categories."""
@@ -8,8 +8,8 @@ def test_equal_distribution():
     test_data = pd.DataFrame({
         'aqi_category': ['Good', 'Moderate', 'Unhealthy', 'Very Unhealthy'] * 25
     })
-    test_file = "test_equal_distribution.xlsx"
-    test_data.to_excel(test_file, index=False)
+    test_file = "test_equal_distribution.csv"
+    test_data.to_csv(test_file, index=False)
 
     # Verify that the function runs without error
     try:
@@ -19,13 +19,13 @@ def test_equal_distribution():
     except Exception as e:
         assert False, f"Function failed with error: {e}"
     finally:
-        os.remove(test_file)  # Clean up test file
+        os.remove(test_file)
 
 def test_missing_column():
     """Test for missing 'aqi_category' column."""
     test_data = pd.DataFrame({'random_column': [1, 2, 3]})
-    test_file = "test_missing_column.xlsx"
-    test_data.to_excel(test_file, index=False)
+    test_file = "test_missing_column.csv"
+    test_data.to_csv(test_file, index=False)
 
     try:
         plot_aqi_pie_chart(test_file)
@@ -41,8 +41,8 @@ def test_unequal_distribution():
     test_data = pd.DataFrame({
         'aqi_category': ['Good'] * 50 + ['Moderate'] * 30 + ['Unhealthy'] * 15 + ['Very Unhealthy'] * 5
     })
-    test_file = "test_unequal_distribution.xlsx"
-    test_data.to_excel(test_file, index=False)
+    test_file = "test_unequal_distribution.csv"
+    test_data.to_csv(test_file, index=False)
 
     # Verify that the function runs without error
     try:
