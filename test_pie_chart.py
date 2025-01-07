@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from First import plot_aqi_pie_chart  
+from Analysis import plot_aqi_pie_chart  
 
 def test_equal_distribution():
     """Test for equal distribution of AQI categories."""
