@@ -85,10 +85,7 @@ def test_create_boxplot_aqi_by_category_runs():
         'aqi_value': [20, 60, 150, 55, 25],
     })
 
-    with patch('pandas.read_csv', return_value=df):
-        try:
-            # The function internally calls read_csv("some_file.csv"),
-            # but will receive our mocked DataFrame instead.
-            create_boxplot_aqi_by_category("fake_file.csv")
-        except Exception as e:
-            pytest.fail(f"Box plot creation raised an exception: {e}")
+    try:
+        create_boxplot_aqi_by_category(df)
+    except Exception as e:
+        pytest.fail(f"Box plot creation raised an exception: {e}")
