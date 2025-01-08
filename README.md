@@ -67,7 +67,7 @@ The dataset used for this analysis is `global_air_pollution_data.csv`, containin
    cd DAT5902-FinalProject
 
 
-## Repository-structure 
+## repository-structure 
 
 - DAT5902-FinalProject/
 - ├── analysis.py             # Analysis functions and visualizations
