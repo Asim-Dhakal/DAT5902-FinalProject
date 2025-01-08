@@ -13,7 +13,7 @@ jobs:
             pip install pytest pandas matplotlib openpyxl
       - run:
           name: Run tests
-          command: pytest test_pie_chart.py
+          command: pytest Test_Suite.py
 
 workflows:
   version: 2
