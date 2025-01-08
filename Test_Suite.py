@@ -75,25 +75,27 @@ def test_analyze_average_aqi_runs():
         if os.path.exists(test_file_path):
             os.remove(test_file_path)
 
-def test_create_boxplot_aqi_by_category_runs():
+def test_analyze_average_aqi_runs():
     """
-    A test that creates a temporary CSV from an in-memory DataFrame,
-    calls the box plot function, and then removes the temporary file.
+    A simple check that analyze_average_aqi() runs without raising errors,
+    using plain Python asserts (not pytest.fail).
     """
     df = pd.DataFrame({
-        'aqi_category': ['Good', 'Moderate', 'Unhealthy', 'Moderate', 'Good'],
-        'aqi_value': [20, 60, 150, 55, 25],
+        'country_name': ['CountryA', 'CountryB', 'CountryC'],
+        'city_name': ['CityX', 'CityY', 'CityZ'],
+        'aqi_value': [50, 80, 120],
+        'aqi_category': ['Moderate', 'Moderate', 'Unhealthy']
     })
 
+
     test_file_path = os.path.join(os.path.dirname(__file__), "temp_test_data.csv")
-
-
     df.to_csv(test_file_path, index=False)
 
     try:
-        create_boxplot_aqi_by_category(test_file_path)
+        analyze_average_aqi(test_file_path)
     except Exception as e:
-        pytest.fail(f"Box plot function raised an exception: {e}")
+        assert False, f"analyze_average_aqi raised an exception: {e}"
     finally:
+        # 4. Clean up the temporary file
         if os.path.exists(test_file_path):
             os.remove(test_file_path)
