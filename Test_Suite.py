@@ -5,17 +5,17 @@ from Analysis import analyze_average_aqi
 
 def test_equal_distribution():
     """Test for equal distribution of AQI categories."""
-    # Create a mock dataset with equal distribution
+    ## Create a mock dataset with equal distribution
     test_data = pd.DataFrame({
         'aqi_category': ['Good', 'Moderate', 'Unhealthy', 'Very Unhealthy'] * 25
     })
     test_file = "test_equal_distribution.csv"
     test_data.to_csv(test_file, index=False)
 
-    # Verify that the function runs without error
+    ## Verify that the function runs without error
     try:
         plot_aqi_pie_chart(test_file)
-        assert True  # If it runs successfully, pass the test
+        assert True  ## If it runs successfully, pass the test
     except Exception as e:
         assert False, f"Function failed with error: {e}"
     finally:
@@ -43,10 +43,10 @@ def test_unequal_distribution():
     test_file = "test_unequal_distribution.csv"
     test_data.to_csv(test_file, index=False)
 
-    # Verify that the function runs without error
+    ## Verify that the function runs without error
     try:
         plot_aqi_pie_chart(test_file)
-        assert True  # If it runs successfully, pass the test
+        assert True  ## If it runs successfully, pass the test
     except Exception as e:
         assert False, f"Function failed with error: {e}"
     finally:
