@@ -33,4 +33,8 @@ def plot_aqi_pie_chart(file_path):
     plt.tight_layout()
     plt.show()
 
+
+
+
+
 plot_aqi_pie_chart("global_air_pollution_data.csv")
