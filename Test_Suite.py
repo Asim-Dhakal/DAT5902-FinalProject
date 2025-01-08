@@ -2,6 +2,7 @@ import pandas as pd
 import os
 from Analysis import plot_aqi_pie_chart  
 from Analysis import analyze_average_aqi
+from Analysis import create_boxplot_aqi_by_category
 
 def test_equal_distribution():
     """Test for equal distribution of AQI categories."""
@@ -73,3 +74,21 @@ def test_analyze_average_aqi_runs():
     finally:
         if os.path.exists(test_file_path):
             os.remove(test_file_path)
+
+def test_create_boxplot_aqi_by_category_runs():
+    """
+    A basic test ensuring the box plot function doesn't raise exceptions
+    when given a valid DataFrame, without using a temporary file.
+    """
+    df = pd.DataFrame({
+        'aqi_category': ['Good', 'Moderate', 'Unhealthy', 'Moderate', 'Good'],
+        'aqi_value': [20, 60, 150, 55, 25],
+    })
+
+    with patch('pandas.read_csv', return_value=df):
+        try:
+            # The function internally calls read_csv("some_file.csv"),
+            # but will receive our mocked DataFrame instead.
+            create_boxplot_aqi_by_category("fake_file.csv")
+        except Exception as e:
+            pytest.fail(f"Box plot creation raised an exception: {e}")
