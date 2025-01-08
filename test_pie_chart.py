@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 from Analysis import plot_aqi_pie_chart  
+from Analysis import analyze_average_aqi
 
 def test_equal_distribution():
     """Test for equal distribution of AQI categories."""
@@ -50,3 +51,25 @@ def test_unequal_distribution():
         assert False, f"Function failed with error: {e}"
     finally:
         os.remove(test_file)
+
+def test_analyze_average_aqi_runs():
+    '''
+    This test verifies that the analyze_average_aqi function can handle a valid dataset without raising errors.
+    '''
+    df = pd.DataFrame({
+        'country_name': ['CountryA', 'CountryB', 'CountryC'],
+        'city_name': ['CityX', 'CityY', 'CityZ'],
+        'aqi_value': [50, 80, 120],
+        'aqi_category': ['Moderate', 'Moderate', 'Unhealthy']
+    })
+
+    test_file_path = os.path.join(os.path.dirname(__file__), "temp_test_data.csv")
+    df.to_csv(test_file_path, index=False)
+
+    try:
+        analyze_average_aqi(test_file_path)
+    except Exception as e:
+        assert False, f"analyze_average_aqi raised an exception: {e}"
+    finally:
+        if os.path.exists(test_file_path):
+            os.remove(test_file_path)

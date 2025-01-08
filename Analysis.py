@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
+Ourdata = ('global_air_pollution_data.csv')
 ## Pi chart for aqi 
 def plot_aqi_pie_chart(file_path):
     # Load dataset
@@ -34,7 +34,20 @@ def plot_aqi_pie_chart(file_path):
     plt.show()
 
 
+def analyze_average_aqi(file_path):
+    data = pd.read_csv(file_path)
+    country_means = data.groupby('country_name')['aqi_value'].mean().sort_values(ascending=False)
+
+    top_10 = country_means.head(10)
+    plt.figure(figsize=(10, 6))
+    top_10.plot(kind='bar', color='red', edgecolor='black')
+    plt.title('Top 10 Countries by Average AQI')
+    plt.ylabel('Average AQI')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    plt.show()
 
 
 
-plot_aqi_pie_chart("global_air_pollution_data.csv")
+plot_aqi_pie_chart(Ourdata)
+analyze_average_aqi(Ourdata)
