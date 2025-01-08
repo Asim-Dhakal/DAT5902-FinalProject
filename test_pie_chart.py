@@ -14,7 +14,6 @@ def test_equal_distribution():
     # Verify that the function runs without error
     try:
         plot_aqi_pie_chart(test_file)
-        print("Success: test_equal_distribution passed.")
         assert True  # If it runs successfully, pass the test
     except Exception as e:
         assert False, f"Function failed with error: {e}"
@@ -31,7 +30,6 @@ def test_missing_column():
         plot_aqi_pie_chart(test_file)
         assert False, "Function should raise an error for missing 'aqi_category' column."
     except KeyError as e:
-        print("Success: test_missing_column passed.")
         assert "'aqi_category'" in str(e), f"Unexpected error: {e}"
     finally:
         os.remove(test_file)
@@ -47,7 +45,6 @@ def test_unequal_distribution():
     # Verify that the function runs without error
     try:
         plot_aqi_pie_chart(test_file)
-        print("Success: test_unequal_distribution passed.")
         assert True  # If it runs successfully, pass the test
     except Exception as e:
         assert False, f"Function failed with error: {e}"
