@@ -4,6 +4,9 @@ from Analysis import plot_aqi_pie_chart
 from Analysis import analyze_average_aqi
 from Analysis import create_boxplot_aqi_by_category
 
+### All tests for pi chart ###
+
+
 def test_equal_distribution():
     """Test for equal distribution of AQI categories."""
     ## Create a mock dataset with equal distribution
@@ -36,6 +39,7 @@ def test_missing_column():
     finally:
         os.remove(test_file)
 
+
 def test_unequal_distribution():
     """Test for unequal distribution of AQI categories."""
     test_data = pd.DataFrame({
@@ -53,6 +57,10 @@ def test_unequal_distribution():
     finally:
         os.remove(test_file)
 
+### tests for pi chart finished
+
+
+### Test for data validation for bar graph and for histagram
 def test_analyze_average_aqi_runs():
     '''
     This test verifies that the analyze_average_aqi function can handle a valid dataset without raising errors.
@@ -74,6 +82,7 @@ def test_analyze_average_aqi_runs():
     finally:
         if os.path.exists(test_file_path):
             os.remove(test_file_path)
+
 
 def test_boxplot_aqi_by_category():
     """
