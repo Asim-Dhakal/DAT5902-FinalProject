@@ -77,8 +77,8 @@ def test_analyze_average_aqi_runs():
 
 def test_boxplot_aqi_by_category():
     """
-    A simple check that analyze_average_aqi() runs without raising errors,
-    using plain Python asserts (not pytest.fail).
+    A simple check that create_boxplot_aqi_by_category runs without raising errors,
+    using plain Python asserts.
     """
     df = pd.DataFrame({
         'country_name': ['CountryA', 'CountryB', 'CountryC'],
@@ -94,7 +94,7 @@ def test_boxplot_aqi_by_category():
     try:
         create_boxplot_aqi_by_category(test_file_path)
     except Exception as e:
-        assert False, f"analyze_average_aqi raised an exception: {e}"
+        assert False, f"create_boxplot_aqi_by_category raised an exception: {e}"
     finally:
         # 4. Clean up the temporary file
         if os.path.exists(test_file_path):
