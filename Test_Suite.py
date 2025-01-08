@@ -75,7 +75,7 @@ def test_analyze_average_aqi_runs():
         if os.path.exists(test_file_path):
             os.remove(test_file_path)
 
-def test_analyze_average_aqi_runs():
+def test_boxplot_aqi_by_category():
     """
     A simple check that analyze_average_aqi() runs without raising errors,
     using plain Python asserts (not pytest.fail).
@@ -92,7 +92,7 @@ def test_analyze_average_aqi_runs():
     df.to_csv(test_file_path, index=False)
 
     try:
-        analyze_average_aqi(test_file_path)
+        create_boxplot_aqi_by_category(test_file_path)
     except Exception as e:
         assert False, f"analyze_average_aqi raised an exception: {e}"
     finally:
