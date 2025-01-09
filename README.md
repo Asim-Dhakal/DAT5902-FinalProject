@@ -25,7 +25,7 @@ The results are visualized using pie charts, bar graphs, and boxplots, offering 
 ## Dataset Overview
 
 The dataset used for this analysis is `global_air_pollution_data.csv`, containing the following columns:
-Link to the dataset : https://www.kaggle.com/datasets/sazidthe1/global-air-pollution-data/data
+- Link to the dataset : https://www.kaggle.com/datasets/sazidthe1/global-air-pollution-data/data
 
 - **country_name**: Name of the country.
 - **city_name**: Name of the city.
